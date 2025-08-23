@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <title>{{ site.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <script defer src="{{ '/assets/js/theme-toggle.js' | relative_url }}"></script>
+</head>
+<body>
+  <main>
+    {{ content }}
+  </main>
+  <footer>
+    <p>© {{ 'now' | date: "%Y" }} {{ site.author.name }}. Built with Jekyll & GitHub Pages.</p>
+  </footer>
+</body>
+</html>

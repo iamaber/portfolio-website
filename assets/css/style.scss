@@ -1,0 +1,38 @@
+---
+---
+
+$bg: #0d1117;
+$fg: #c9d1d9;
+$accent: #58a6ff;
+
+body {
+  margin: 0;
+  font-family: "SF Pro","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background: $bg;
+  color: $fg;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 0 1.2rem;
+}
+
+h1, h2 { font-weight: 600; }
+a { color: $accent; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.btn {
+  display: inline-block;
+  margin: .5rem .5rem 0 0;
+  padding: .6rem 1.2rem;
+  border: 1px solid $accent;
+  border-radius: .3rem;
+  color: $accent;
+  transition: .2s;
+}
+.btn:hover { background: $accent; color: $bg; }
+
+.muted { opacity: .6; }
+footer { text-align: center; margin-top: 4rem; font-size: .8rem; }

@@ -1,0 +1,16 @@
+title: "Md. Aber Islam"
+description: "AI/ML Engineer • RAG • Computer Vision • NLP"
+url: "https://iamaber.github.io"   # change to your username
+baseurl: "/portfolio-website"              # repo name; delete if repo is <user>.github.io
+
+author:
+  name: "Md. Aber Islam"
+  email: "aber.islam.dev@gmail.com"
+  linkedin: "md-aber-islam"
+  github: "iamaber"
+
+exclude: [README.md, Gemfile*, vendor]
+markdown: kramdown
+sass:
+  style: compressed
+plugins: []

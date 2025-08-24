@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md. Aber Islam | AI/ML Engineer</title>
+    <title>Md. Aber Islam - AI/ML Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --bg-primary: #121212;
-            --bg-secondary: #1e1e1e;
-            --text-primary: #f0f0f0;
-            --text-secondary: #a0a0a0;
-            --accent: #64ffda;
-            --accent-secondary: #bb86fc;
-            --card-bg: #1e1e1e;
-            --card-border: #333;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent: #00ff88;
+            --border: #333;
+            --hover: #2a2a2a;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-primary);
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -35,15 +36,22 @@
             padding: 0 20px;
         }
 
+        /* Header */
         header {
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--card-border);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 0;
         }
 
         .logo {
@@ -59,142 +67,256 @@
         }
 
         .nav-links a {
-            color: var(--text-primary);
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
             color: var(--accent);
         }
 
-        section {
-            padding: 4rem 0;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s ease;
         }
 
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
         .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+            to { text-shadow: 0 0 30px rgba(0, 255, 136, 0.5); }
         }
 
         .hero p {
             font-size: 1.2rem;
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
+            margin-bottom: 2rem;
         }
 
-        .accent {
-            color: var(--accent);
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background-color: transparent;
+            padding: 12px 24px;
+            border: 2px solid var(--accent);
+            background: transparent;
             color: var(--accent);
-            border: 1px solid var(--accent);
-            border-radius: 4px;
             text-decoration: none;
-            margin-top: 2rem;
-            transition: all 0.3s;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-family: inherit;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 0;
         }
 
         .btn:hover {
-            background-color: rgba(100, 255, 218, 0.1);
-        }
-
-        .btn-download {
-            background-color: var(--accent);
             color: var(--bg-primary);
-            border: none;
-            margin-left: 1rem;
+            transform: translateY(-2px);
         }
 
-        .btn-download:hover {
-            background-color: rgba(100, 255, 218, 0.9);
+        /* Sections */
+        .section {
+            padding: 6rem 0;
         }
 
         .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-size: 2.5rem;
             text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
         }
 
         .skill-category {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
+            background: var(--bg-secondary);
             padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
         }
 
-        .skill-category h3 {
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .skill-category h4 {
+            color: var(--accent);
             margin-bottom: 1rem;
-            color: var(--accent);
+            font-size: 1.1rem;
         }
 
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            margin-bottom: 0.5rem;
+        .skill-tags {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
-        .skill-list li::before {
-            content: "▹";
-            color: var(--accent);
-            margin-right: 0.5rem;
+        .skill-tag {
+            background: var(--hover);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
         }
 
+        /* Projects */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
 
         .project-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
         }
 
-        .project-content {
+        .project-header {
             padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
         }
 
         .project-title {
+            color: var(--accent);
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
-            color: var(--accent);
         }
 
         .project-description {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .project-tech {
+            padding: 1rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: var(--hover);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent);
         }
 
         .project-links {
+            padding: 1.5rem;
             display: flex;
             gap: 1rem;
         }
@@ -205,289 +327,479 @@
             font-size: 0.9rem;
             display: flex;
             align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.3s ease;
         }
 
-        .project-link::before {
-            content: "↗";
-            margin-right: 0.3rem;
+        .project-link:hover {
+            opacity: 0.7;
         }
 
+        /* Experience */
         .experience-item {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: 0 3px 3px 0;
         }
 
         .experience-header {
-            display: flex;
-            justify-content: space-between;
             margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
         }
 
         .experience-company {
-            font-weight: bold;
-            color: var(--accent);
-        }
-
-        .experience-date {
             color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
         }
 
-        .experience-role {
-            font-style: italic;
-            margin-bottom: 1rem;
+        .experience-duration {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
-        .education-item {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+        .experience-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
-        footer {
+        .experience-description li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact */
+        .contact-content {
             text-align: center;
-            padding: 2rem 0;
-            border-top: 1px solid var(--card-border);
-            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .social-links {
+        .contact-links {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .social-link {
-            color: var(--text-secondary);
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        .social-link:hover {
-            color: var(--accent);
-        }
-
-        .about-buttons {
-            display: flex;
-            justify-content: center;
+            gap: 2rem;
             margin-top: 2rem;
-            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg-secondary);
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Mobile Responsiveness */
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-primary);
         }
 
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 1rem;
+                border-top: 1px solid var(--border);
             }
-            
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
-            .projects-grid {
+
+            .about-content {
                 grid-template-columns: 1fr;
             }
-            
-            .about-buttons {
+
+            .cta-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
-            .btn-download {
-                margin-left: 0;
-                margin-top: 1rem;
+
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Md. Aber Islam</div>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav class="container">
+            <div class="logo">
+                <i class="fas fa-robot"></i> <span style="margin-left:8px;"></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <h1>AI & Machine Learning <span class="accent">Engineer</span></h1>
-            <p>I design and implement intelligent systems that solve real-world problems using cutting-edge AI technologies.</p>
-            <a href="#projects" class="btn">View My Work</a>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Md. Aber Islam</h1>
+            <p>AI/ML Engineer</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn">View Projects</a>
+                <a href="#" class="btn" id="downloadResume">Download Resume</a>
+            </div>
         </div>
     </section>
 
-    <section id="about">
+    <section class="section" id="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <p>I'm an AI/ML engineer with a passion for building intelligent systems that make a difference. My expertise spans machine learning, natural language processing, and deploying scalable AI solutions.</p>
-                <p>I enjoy working on challenging problems and turning complex data into actionable insights and intelligent applications.</p>
-                
-                <div class="about-buttons">
-                    <a href="#contact" class="btn">Get In Touch</a>
-                    <a href="resume.pdf" class="btn btn-download" download="Md_Aber_Islam_Resume.pdf">
-                        Download Resume
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <p>I am Md. Aber Islam, an AI and Machine Learning Engineer with a passion for building end-to-end AI solutions that solve real-world problems. With hands-on experience in developing NLP pipelines, fine-tuning Transformer models, and designing scalable AI systems, I specialize in creating intelligent automation for data-driven applications. My expertise spans across Python, PyTorch, FastAPI, LangChain, and more.</p>
+                    <br>
+                    <p>I have hands-on experience with NLP projects, including building comprehensive ML pipelines and Bangla NLP applications.</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4><i class="fas fa-code"></i> Languages</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Ruby</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4><i class="fas fa-cogs"></i> Technologies</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">Sklearn</span>
+                            <span class="skill-tag">HuggingFace</span>
+                            <span class="skill-tag">FAISS</span>
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">LangChain</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4><i class="fas fa-brain"></i> Specializations</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Machine Learning</span>
+                            <span class="skill-tag">NLP</span>
+                            <span class="skill-tag">AutoML</span>
+                            <span class="skill-tag">RAG Systems</span>
+                            <span class="skill-tag">Fine-tuning</span>
+                            <span class="skill-tag">Computer Vision</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3 class="project-title">Medical Guideline RAG System</h3>
+                        <p class="project-description">
+                            An AI-powered medical consultation system providing evidence-based medication guidance using RAG architecture with comprehensive drug interaction analysis across 33 medical domains. Processed 50,000+ medical articles with &lt;200ms search latency.
+                        </p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">FAISS</span>
+                        <span class="tech-tag">Gemini AI</span>
+                        <span class="tech-tag">NetworkX</span>
+                        <span class="tech-tag">Streamlit</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/iamaber/medical-guideline-rag" class="project-link">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="https://huggingface.co/spaces/iamaber/medical-guideline-rag" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3 class="project-title">Real-time Face Mask Detection</h3>
+                        <p class="project-description">
+                            A computer vision system detecting face masks in real-time video streams with 96% accuracy using PyTorch and MobileNetV3 architecture. Supports multiple input types including live camera feeds.
+                        </p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">MobileNetV3</span>
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Gradio</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/iamaber/real-time-face-mask-detection" class="project-link">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="https://huggingface.co/spaces/iamaber/face-mask-detector" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3 class="project-title">Real-time News Sentiment Dashboard</h3>
+                        <p class="project-description">
+                            A real-time dashboard monitoring news headlines with instant sentiment classification. Processes 100+ headlines per minute with 96% accuracy using Hugging Face Transformers and FastAPI.
+                        </p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">HuggingFace</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">RSS Feeds</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/iamaber/realtime-news-sentiment" class="project-link">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="https://huggingface.co/spaces/iamaber/Real-time-News-Sentiment-Analysis" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3 class="project-title">AutoML AI Assistant Usage Prediction</h3>
+                        <p class="project-description">
+                            An automated ML system predicting students' AI assistant usage patterns using PyCaret. Processed 10,000+ interaction records with 90% prediction accuracy, reducing ML workflow time significantly.
+                        </p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">PyCaret</span>
+                        <span class="tech-tag">AutoML</span>
+                        <span class="tech-tag">Data Science</span>
+                        <span class="tech-tag">Educational AI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/iamaber/AutoML_AI-Assistant-Usage-in-Student-Life" class="project-link">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="https://huggingface.co/spaces/iamaber/AI-Assistant-Usage-Student-AutoML" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="experience">
+        <div class="container">
+            <h2 class="section-title fade-in">Experience</h2>
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <h3 class="experience-title">Machine Learning Intern</h3>
+                    <div class="experience-company">Aspire to Innovate (a2i) Program</div>
+                    <div class="experience-duration">Jun 2024 - Dec 2024 | Dhaka, Bangladesh</div>
+                </div>
+                <div class="experience-description">
+                    <ul>
+                        <li>Worked at a government initiative developing innovative technology solutions for public services, processing and analyzing datasets while implementing quality assurance protocols for government systems.</li>
+                        <li>Developed NLP pipelines for Bangla text classification, achieving high accuracy in sentiment analysis and designed web scraping solutions for Bangladesh's largest open-source Bangla NLP corpus.</li>
+                        <li>Engineered automated workflows reducing data preprocessing time and implemented machine learning models for public service optimization analytics.</li>
+                        <li>Contributed to building scalable ML infrastructure for government data processing, enabling efficient analysis of large-scale public service datasets for policy decision-making.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="contact-content fade-in">
+                <p>I'm always interested in discussing new opportunities, collaborations, or just chatting about AI/ML. Feel free to reach out!</p>
+                <div class="contact-links">
+                    <a href="mailto:aber.islam.dev@gmail.com" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        aber.islam.dev@gmail.com
+                    </a>
+                   
+                    <a href="https://www.linkedin.com/in/md-aber-islam" class="contact-link">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/iamaber" class="contact-link">
+                        <i class="fab fa-github"></i>
+                        GitHub
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Languages</h3>
-                    <ul class="skill-list">
-                        <li>Python</li>
-                        <li>SQL</li>
-                        <li>Ruby</li>
-                        <li>JavaScript</li>
-                        <li>HTML/CSS</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Technologies</h3>
-                    <ul class="skill-list">
-                        <li>PyTorch</li>
-                        <li>Numpy, Pandas, Sklearn</li>
-                        <li>PyCaret (AutoML)</li>
-                        <li>HuggingFace Transformers</li>
-                        <li>FAISS, FastAPI, Streamlit</li>
-                        <li>Gradio, LangChain</li>
-                        <li>Git/GitHub, Docker</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Methodologies</h3>
-                    <ul class="skill-list">
-                        <li>Machine Learning</li>
-                        <li>Natural Language Processing</li>
-                        <li>AutoML</li>
-                        <li>Web Scraping</li>
-                        <li>Fine-tuning</li>
-                        <li>Vector Databases</li>
-                        <li>RAG Systems</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3 class="project-title">Medical Guideline RAG System</h3>
-                        <p class="project-description">An AI-powered medical consultation system providing evidence-based medication guidance using RAG architecture with comprehensive drug interaction analysis across 33 medical domains.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/iamaber/medical-guideline-rag" class="project-link">GitHub</a>
-                            <a href="https://huggingface.co/spaces/iamaber/medical-guideline-rag" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3 class="project-title">Real-time Face Mask Detection</h3>
-                        <p class="project-description">A computer vision system that detects whether people are wearing face masks in real-time video streams, webcam feeds, and uploaded images with high efficiency.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/iamaber/real-time-face-mask-detection" class="project-link">GitHub</a>
-                            <a href="https://huggingface.co/spaces/iamaber/face-mask-detector" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3 class="project-title">Real-time News Sentiment Analysis Dashboard</h3>
-                        <p class="project-description">A real-time dashboard that continuously monitors news headlines and provides instant sentiment classification and visualization.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/iamaber/realtime-news-sentiment" class="project-link">GitHub</a>
-                            <a href="https://huggingface.co/spaces/iamaber/Real-time-News-Sentiment-Analysis" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3 class="project-title">AutoML AI Assistant Usage Prediction System</h3>
-                        <p class="project-description">An automated machine learning system that predicts students' likelihood of reusing AI assistants based on interaction patterns and academic data.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/iamaber/AutoML_AI-Assistant-Usage-in-Student-Life" class="project-link">GitHub</a>
-                            <a href="https://huggingface.co/spaces/iamaber/AI-Assistant-Usage-Student-AutoML" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="experience-item">
-                <div class="experience-header">
-                    <span class="experience-company">Aspire to Innovate (a2i) Program</span>
-                    <span class="experience-date">Jun 2024 – Dec 2024</span>
-                </div>
-                <div class="experience-role">Machine Learning Intern</div>
-                <ul class="skill-list">
-                    <li>Worked at a government initiative aimed at innovative technology solutions for public services</li>
-                    <li>Developed NLP pipelines for Bangla text classification, achieving high accuracy in sentiment analysis</li>
-                    <li>Engineered automated workflows reducing data preprocessing time</li>
-                    <li>Contributed to building scalable ML infrastructure for government data processing</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-item">
-                <div class="experience-header">
-                    <span class="experience-company">BRAC University</span>
-                    <span class="experience-date">Jul 2020 – Jan 2025</span>
-                </div>
-                <div class="experience-role">Bachelor of Science in Computer Science and Engineering</div>
-                <p>Dhaka, Bangladesh</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div style="text-align: center;">
-                <p>I'm always open to discussing AI/ML projects, research opportunities, or potential collaborations.</p>
-                <a href="mailto:aber.islam.dev@gmail.com" class="btn">Send me an email</a>
-            </div>
-        </div>
-    </section>
-
     <footer>
         <div class="container">
-            <p>© 2024 Md. Aber Islam. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/md-aber-islam" class="social-link">LinkedIn</a>
-                <a href="https://github.com/iamaber" class="social-link">GitHub</a>
-                <a href="mailto:aber.islam.dev@gmail.com" class="social-link">Email</a>
-            </div>
+            <p>&copy; 2025 Md. Aber Islam.</p>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenu.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenu.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Resume download functionality
+        document.getElementById('downloadResume').addEventListener('click', function(e) {
+            e.preventDefault();
+    
+            window.open('resume.pdf', '_blank');
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

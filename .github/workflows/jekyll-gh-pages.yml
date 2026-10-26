@@ -1,10 +1,12 @@
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+name: Deploy Jekyll site to GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+    paths-ignore:
+      - "**.md"
+      - "LICENSE"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -22,8 +24,28 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Validation job: fails fast on invalid HTML or broken links
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Validate HTML
+        run: npx --yes html-validate@9.7.1 index.html
+      - name: Check for broken links
+        run: >-
+          npx --yes linkinator@6.1.2 index.html
+          --recurse
+          --skip "linkedin\.com"
+          --verbosity error
+
   # Build job
   build:
+    needs: validate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

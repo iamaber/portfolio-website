@@ -1,0 +1,20 @@
+# Jekyll build output and caches
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Ruby / Bundler
+Gemfile.lock
+*.gem
+.bundle/
+vendor/bundle/
+
+# Editor and OS noise
+.DS_Store
+Thumbs.db
+*.swp
+
+# Node tooling used by the CI validation job
+node_modules/
+npm-debug.log*

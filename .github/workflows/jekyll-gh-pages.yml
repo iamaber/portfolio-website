@@ -27,6 +27,9 @@ jobs:
   # Validation job: fails fast on invalid HTML or broken links
   validate:
     runs-on: ubuntu-latest
+    # Runs unpinned-by-lockfile npx tooling: read-only token, no Pages/OIDC rights
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4

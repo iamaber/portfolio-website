@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Md. Aber Islam - AI/ML Engineer</title>
     <meta name="description" content="Md. Aber Islam, AI/ML Engineer at Nybsys Inc. Building agentic systems, Bangla NLP tools, speech pipelines, and computer vision applications.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="canonical" href="https://iamaber.github.io/portfolio-website/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Md. Aber Islam — AI/ML Engineer">
+    <meta property="og:title" content="Md. Aber Islam — AI/ML Engineer">
+    <meta property="og:description" content="AI/ML Engineer at Nybsys Inc building agentic systems, Bangla NLP tools, speech pipelines, and computer vision applications.">
+    <meta property="og:url" content="https://iamaber.github.io/portfolio-website/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Md. Aber Islam — AI/ML Engineer">
+    <meta name="twitter:description" content="AI/ML Engineer at Nybsys Inc building agentic systems, Bangla NLP tools, speech pipelines, and computer vision applications.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='19' font-weight='bold' fill='%2300ff88' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
         * {
             margin: 0;
@@ -85,6 +95,10 @@
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--accent);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
         }
 
         .nav-links {
@@ -610,9 +624,9 @@
     <a class="skip-link" href="#home">Skip to main content</a>
     <header>
         <nav class="container" aria-label="Main navigation">
-            <div class="logo">
-                <i class="fas fa-robot"></i> <span style="margin-left:8px;"></span>
-            </div>
+            <a class="logo" href="#home" aria-label="Md. Aber Islam — back to top">
+                <i class="fas fa-robot" aria-hidden="true"></i>
+            </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -719,6 +733,8 @@
                             <span class="skill-tag">GitHub</span>
                             <span class="skill-tag">Streamlit</span>
                             <span class="skill-tag">Gradio</span>
+                            <span class="skill-tag">Next.js</span>
+                            <span class="skill-tag">TypeScript</span>
                         </div>
                     </div>
                     <div class="skill-category">
@@ -742,7 +758,7 @@
                     <div class="project-header">
                         <h3 class="project-title">banglatok — Bangla/Banglish Tokenizers</h3>
                         <p class="project-description">
-                            Published a typed Python tokenizer backed by a native Go Unigram/BPE engine for Bangla, English, and Banglish, with zero Python runtime dependencies. Ships two offline BPE models, a CLI, and token-ID-preserving Hugging Face exports. Trained on 563,476 records and verified lossless normalized-text round trips on 10,000 unseen reviews.
+                            Published a typed Python tokenizer backed by a native Go Unigram/BPE engine for Bangla, English, and Banglish, with zero Python runtime dependencies. Built and published an audited v2 corpus with 3,047,265 unique records and 720M normalized characters—5.4× the v1 record count—with source provenance, deterministic deduplication, and leakage gates. Benchmarked native BPE and SentencePiece on frozen and unseen user-style reviews; retained the current models when v2 improved formal text but regressed Banglish.
                         </p>
                     </div>
                     <div class="project-tech">
@@ -762,6 +778,12 @@
                         <a href="https://huggingface.co/iamaber/banglatok-bn-bpe-58k" class="project-link">
                             <i class="fas fa-external-link-alt" aria-hidden="true"></i> Model
                         </a>
+                        <a href="https://huggingface.co/datasets/iamaber/banglatok-training-corpus" class="project-link">
+                            <i class="fas fa-database" aria-hidden="true"></i> Dataset
+                        </a>
+                        <a href="https://github.com/iamaber/banglatok/blob/main/research/reports/CORPUS_V2_RESULTS.md" class="project-link">
+                            <i class="fas fa-file-alt" aria-hidden="true"></i> Results
+                        </a>
                     </div>
                 </div>
 
@@ -769,22 +791,23 @@
                     <div class="project-header">
                         <h3 class="project-title">Medical Guideline RAG System</h3>
                         <p class="project-description">
-                            An AI-powered medical consultation system providing evidence-based medication guidance using RAG architecture with comprehensive drug interaction analysis across 33 medical domains. Processed 50,000+ medical articles with &lt;200ms search latency.
+                            An AI-assisted medical consultation system providing evidence-based medication guidance using RAG architecture with drug interaction analysis across 33 medical domains. Indexed 5,683 PubMed and WHO guideline records with FAISS and sentence-transformers for semantic retrieval, with a multi-provider LLM backend.
                         </p>
                     </div>
                     <div class="project-tech">
                         <span class="tech-tag">FastAPI</span>
                         <span class="tech-tag">FAISS</span>
-                        <span class="tech-tag">Gemini AI</span>
+                        <span class="tech-tag">sentence-transformers</span>
+                        <span class="tech-tag">Next.js 15 / TypeScript</span>
                         <span class="tech-tag">NetworkX</span>
                         <span class="tech-tag">Streamlit</span>
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/iamaber/medical-guideline-rag" class="project-link">
-                            <i class="fab fa-github"></i> Code
+                            <i class="fab fa-github" aria-hidden="true"></i> Code
                         </a>
                         <a href="https://huggingface.co/spaces/iamaber/medical-guideline-rag" class="project-link">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
+                            <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Demo
                         </a>
                     </div>
                 </div>
@@ -807,9 +830,6 @@
                         <a href="https://github.com/iamaber/mistral-7b-instruct-finetune" class="project-link">
                             <i class="fab fa-github" aria-hidden="true"></i> Code
                         </a>
-                        <a href="https://github.com/iamaber/mistral-7b-instruct-finetune/blob/main/Mistral-7B%20LoRA.pdf" class="project-link">
-                            <i class="fas fa-file-alt" aria-hidden="true"></i> Paper
-                        </a>
                     </div>
                 </div>
 
@@ -828,10 +848,10 @@
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/iamaber/real-time-face-mask-detection" class="project-link">
-                            <i class="fab fa-github"></i> Code
+                            <i class="fab fa-github" aria-hidden="true"></i> Code
                         </a>
                         <a href="https://huggingface.co/spaces/iamaber/face-mask-detector" class="project-link">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
+                            <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Demo
                         </a>
                     </div>
                 </div>
@@ -851,10 +871,10 @@
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/iamaber/realtime-news-sentiment" class="project-link">
-                            <i class="fab fa-github"></i> Code
+                            <i class="fab fa-github" aria-hidden="true"></i> Code
                         </a>
                         <a href="https://huggingface.co/spaces/iamaber/Real-time-News-Sentiment-Analysis" class="project-link">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
+                            <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Demo
                         </a>
                     </div>
                 </div>
@@ -874,10 +894,10 @@
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/iamaber/AutoML_AI-Assistant-Usage-in-Student-Life" class="project-link">
-                            <i class="fab fa-github"></i> Code
+                            <i class="fab fa-github" aria-hidden="true"></i> Code
                         </a>
                         <a href="https://huggingface.co/spaces/iamaber/AI-Assistant-Usage-Student-AutoML" class="project-link">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
+                            <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Demo
                         </a>
                     </div>
                 </div>
@@ -954,16 +974,15 @@
                 <p>I'm always interested in discussing new opportunities, collaborations, or just chatting about AI/ML. Feel free to reach out!</p>
                 <div class="contact-links">
                     <a href="mailto:aber.islam.dev@gmail.com" class="contact-link">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
                         <span>aber.islam.dev@gmail.com</span>
                     </a>
-                   
                     <a href="https://www.linkedin.com/in/md-aber-islam" class="contact-link">
-                        <i class="fab fa-linkedin"></i>
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
                         LinkedIn
                     </a>
                     <a href="https://github.com/iamaber" class="contact-link">
-                        <i class="fab fa-github"></i>
+                        <i class="fab fa-github" aria-hidden="true"></i>
                         GitHub
                     </a>
                 </div>
@@ -1013,9 +1032,15 @@
             });
         });
 
-        window.matchMedia('(max-width: 768px)').addEventListener('change', function () {
+        const mobileQuery = window.matchMedia('(max-width: 768px)');
+        function onMobileQueryChange() {
             setMenuOpen(false);
-        });
+        }
+        if (typeof mobileQuery.addEventListener === 'function') {
+            mobileQuery.addEventListener('change', onMobileQueryChange);
+        } else if (typeof mobileQuery.addListener === 'function') {
+            mobileQuery.addListener(onMobileQueryChange);
+        }
 
         mobileMenu.closest('header').classList.add('navigation-ready');
 
@@ -1041,13 +1066,19 @@
 
         function updateActiveNavigation() {
             let current = '';
-            sections.forEach(function (section) {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    current = section.getAttribute('id');
-                }
-            });
+            const atBottom = Math.ceil(window.scrollY + window.innerHeight) >= document.documentElement.scrollHeight - 2;
+
+            if (atBottom) {
+                current = sections[sections.length - 1].getAttribute('id');
+            } else {
+                sections.forEach(function (section) {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+            }
 
             navItems.forEach(function (item) {
                 const active = item.hash.slice(1) === current;

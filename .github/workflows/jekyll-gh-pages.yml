@@ -38,7 +38,7 @@ jobs:
         with:
           node-version: "20"
       - name: Validate HTML
-        run: npx --yes html-validate@9.7.1 index.html
+        run: npx --yes html-validate@9.7.1 index.html 404.html
       - name: Check for broken links
         run: >-
           npx --yes linkinator@6.1.2 index.html

@@ -43,6 +43,9 @@ jobs:
         run: >-
           npx --yes linkinator@6.1.2 index.html
           --recurse
+          --retry
+          --retry-errors
+          --retry-errors-count 3
           --skip "linkedin\.com"
           --verbosity error
 
